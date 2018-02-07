@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.pojo.TbItem;
 import com.taotao.service.ItemService;
 
 /**
- * 商品查询controller
- * @author lenovo
- *
+ * @Description:商品查询controller
+ * @date:2018年2月7日
+ * @time:上午11:10:14
  */
 @Controller
 public class ItemController {
@@ -26,4 +27,12 @@ public class ItemController {
 		TbItem item = itemService.getItemById(itemId);
 		return item;
 	}
+	
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
+		EasyUIDataGridResult result = itemService.getItemList(page, rows);
+		return result;
+	}
+	
 }
